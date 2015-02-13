@@ -1,3 +1,5 @@
 class Question < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :survey
+  has_many :answers
+  has_many :responses, through: :answers
 end
