@@ -1,0 +1,6 @@
+<div class="container">
+  <h2>Existing Users Log In</h2>
+  <form action='/login' method='post'>
+    <%= erb :"auth/_form", locals: { login: @login } %>
+  </form>
+</div>
