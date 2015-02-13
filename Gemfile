@@ -13,6 +13,9 @@ gem 'thin'
 gem 'activesupport'
 gem 'activerecord'
 
+gem 'bcrypt'
+gem 'sinatra-flash'
+
 gem 'rake'
 
 gem 'shotgun'
