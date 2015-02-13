@@ -1,0 +1,12 @@
+<div class="container">
+  <p><h1><%=current_user.full_name%>'s Surveys</h1></p>
+  <div id="profile_pic"><img src="<%=current_user.profile_picture%>"/></div>
+  <br>
+  <ul>
+  <% current_user.surveys.each do |survey| %>
+    <li>
+      <a href="/<%=survey.ref_code%>"><%survey.survey_name%></a> <a id="edit_button" href='/surveys/<%=survey.id%>/edit'>Edit This Survey</a>
+    </li>  
+  <% end %>
+  </ul>
+</div>
