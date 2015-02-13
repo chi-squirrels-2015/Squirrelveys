@@ -60,9 +60,10 @@ post '/users' do
   @user = User.new(params[:user])
   if @user.save
     flash[:notice] = "Welcome, thanks for signing up!"
+    session[:user_id] = @user.id
     redirect '/profile'
   else
-    @errors = @user.errors.full_messages
+    flash[:notice] = @user.errors.full_messages
     erb :'users/new'
   end
 end
@@ -81,7 +82,7 @@ get '/login' do
   if current_user
     redirect '/profile'
   else
-    erb :'users/login'
+    erb :'auth/login'
   end
 end
 
