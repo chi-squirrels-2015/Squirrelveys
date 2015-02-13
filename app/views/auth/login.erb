@@ -1,6 +1,11 @@
 <div class="container">
   <h2>Existing Users Log In</h2>
   <form action='/login' method='post'>
+
+    <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
     <%= erb :"auth/_form", locals: { login: @login } %>
   </form>
 </div>
