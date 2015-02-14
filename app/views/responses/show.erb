@@ -1,0 +1,6 @@
+<h1>RESPONSES HERE!!</h1>
+<ul>
+<%@responses.each do |response|%>
+  <li><%=response.answer.content%>: <%=@survey.response_count(@survey.id, @answers, response.answer.content)%>  </li> <br>
+<%end%>
+</ul>
