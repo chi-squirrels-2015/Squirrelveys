@@ -8,7 +8,7 @@
   <ul>
   <% current_user.surveys.each do |survey| %>
     <li>
-      <a href="/<%=survey.ref_code%>"><%survey.survey_name%></a> <a id="edit_button" href='/surveys/<%=survey.id%>/edit'>Edit This Survey</a>
+      <a href="/<%=survey.ref_code%>"><%=survey.survey_name%></a> <a id="edit_button" href='/surveys/<%=survey.id%>/edit'>Edit This Survey</a>
     </li>
   <% end %>
   </ul>
