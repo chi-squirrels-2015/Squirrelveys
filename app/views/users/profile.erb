@@ -1,0 +1,29 @@
+
+
+<h1> Hey there, <%=current_user.full_name%></h1>
+  <ul>
+    <%if @surveys.length == 0%>
+         <a href = "/surveys/new"> Create New Survey</a>
+    <%else%>
+      <%@surveys.each do |survey|%>
+        <li><a href = "#"><%=survey.survey_name%></a>
+          <br>
+          <form action="/surveys/<%=survey.id%>/delete %>" method="POST">
+            <input name="_method" type="hidden" value="delete" />
+            <input type="submit" value="DELETE" />
+          </form>
+          <br>
+          <form action="/surveys/<%=survey.id%>/edit %>" method="POST">
+            <input name="_method" type="hidden" value="put" />
+            <input type="submit" value="Edit" />
+          </form>
+          <br>
+          <a href = "/surveys/new"> Create New Survey</a>
+          <br>
+        </li>
+      <%end%>
+    <%end%>
+  </ul>
+
+
+
