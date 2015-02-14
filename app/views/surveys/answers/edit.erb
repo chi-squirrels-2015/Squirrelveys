@@ -1,0 +1,5 @@
+<form action = "/answers/<%=@answer.id%>" method = "POST">
+  <input name="_method" type="hidden" value="PUT"/>
+  <label for="content">Question:</label>
+  <input id="answer_content" type="text" name="answer[content]" value="<%= @answer.content %>" size=60/>
+</form>

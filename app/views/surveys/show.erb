@@ -5,8 +5,11 @@
     <form name="responses" action="/surveys/<%=@survey.ref_code%>/responses" method="POST">
     <% @survey.questions.each do |question| %>
     <br>
-      <a href="#">Edit this Question</a>
-      <a href="#">Delete this Question</a>
+      <a href="/questions/<%=question.id%>/edit">Edit this Question</a>
+      <form action = "/questions/<%=question.id%>/delete" method = "POST">
+        <input name="_method" type="hidden" value="DELETE"/>
+        <input type ="submit" value = "DELETE"/>
+      </form>
       <br>
       <li><h2><%= question.content %></h2></li>
       <ol>
@@ -16,8 +19,11 @@
         <input id="response[<%= question.id  %>]" type="radio" name="response[<%= question.id %>]" value="<%= answer.id %>" text="<%= answer %>">
         <label for="response[<%= question.id  %>]"><%= answer.content %></label>
         <%if current_user == @survey.user%>
-          <a href="#">Edit This Answer</a>
-          <a href="#">Delete This Answer</a><br>
+          <a href="/answers/<%=answer.id%>/edit">Edit This Answer</a>
+        <form action = "/questions/<%=answer.id%>/delete" method = "POST">
+          <input name="_method" type="hidden" value="DELETE"/>
+          <input type ="submit" value = "DELETE"/>
+        </form>
         <%end%>
       <%end%>
       </ol>
