@@ -145,6 +145,40 @@ get '/finished' do
   erb :"complete"
 end
 
+# ++++++++++++++++++++++++++ QUESTIONS
+
+get '/questions/:id/edit' do
+  @question = Question.find(params[:id])
+  erb :"surveys/questions/edit"
+end
+
+put '/questions/:id' do
+  @question = Question.find(params[:id])
+  @question.update(params[:question])
+end
+
+delete '/questions/:id/delete' do
+  survey = Survey.find_by(question_id: params[:id])
+  Question.find(params[:id]).destroy
+  redirect '/#{survey.ref_code}'
+end
+# ++++++++++++++++++++++++++ ANSWERS
+get '/answers/:id/edit' do
+  @answer = Answer.find(params[:id])
+  erb :"surveys/answers/edit"
+end
+
+put '/answers/:id' do
+end
+
+delete '/answers/:id/delete' do
+  Answer.find(params[:id]).destroy
+  redirect '/#{survey.ref_code}'
+end
+
+
+
+
 # ++++++++++++++++++++++++++ LAST ROUTE
 get '/:ref_code' do
   @survey = Survey.find_by(ref_code: params[:ref_code])
