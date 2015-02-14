@@ -113,23 +113,29 @@ get '/logout' do
 end
 # +++++++++++++++++++++++++++++++++++++++ RESPONSES
 get '/surveys/:id/responses' do
-  survey = Survey.find(params[:id])
-
   if current_user == survey.owner
-    @responses = survey.responses
+    @survey= Survey.find(params[:id])
+    @responses = @survey.responses
 
-    erb :"responses/index"
+    erb :"responses/show"
   else
     flash[:notice] = "You don't have access to those responses."
     redirect "/"
   end
 end
 
-get '/surveys/:survey_id/responses/:id' do
-  response = Response.find(params[:id])
+# get '/surveys/:survey_id/responses/:id' do
+#   if current_user == survey.owner
+#     @response = Response.find(params[:id])
+#     survey_id = @response.survey_id
+#     @survey= Survey.find(survey_id)
 
-  erb :"responses/show"
-end
+#     erb :"responses/show"
+#   else
+#     flash[:notice] = "You don't have access to those responses."
+#     redirect "/"
+#   end
+# end
 
 post '/surveys/:ref_code/responses' do
   @survey = Survey.find_by(ref_code: params[:ref_code])
