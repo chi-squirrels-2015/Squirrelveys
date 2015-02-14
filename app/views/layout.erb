@@ -18,6 +18,15 @@
   <title></title>
 </head>
 <body>
+  <div id="header">
+    <h1>Squirrelvey</h1>
+    <% if current_user %>
+      <a href = "/logout">Logout</a>
+      <a href = "/surveys/new">Create New Survey</a>
+      <a href = "/profile">My Profile</a>
+      <!--we dont need an else here, they shouldn't ever not be logged in unless they're taking a survey-->
+    <%end%>
+  </div>
   <%= yield %>
 </body>
 </html>

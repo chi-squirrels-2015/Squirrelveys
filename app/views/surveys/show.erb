@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @survey.title %></h1>
+  <h1><%= @survey.survey_name %></h1>
   <br>
   <ol>
     <% @survey.questions.each do |question| %>
@@ -8,7 +8,7 @@
       <% question.answers.each do |answer| %>
         <li><%= answer.content %></li>
       <%end%>
-      <ol>
+      </ol>
     <%end%>
   </ol>
 </div>

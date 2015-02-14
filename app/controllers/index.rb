@@ -1,3 +1,7 @@
+before "/surveys*" do
+  redirect '/'
+end
+
 get '/' do
   # Look in app/views/index.erb
   erb :index
@@ -98,6 +102,10 @@ post '/login' do
   end
 end
 
+get 'logout' do
+  
+end
+
 # +++++++++++++++++++++++++++++++++++++++ RESPONSES
 get '/surveys/:id/responses' do
   survey = Survey.find(params[:id])
@@ -135,5 +143,5 @@ end
 # ++++++++++++++++++++++++++ LAST ROUTE
 get '/:ref_code' do
   @survey = Survey.find_by(ref_code: params[:ref_code])
-  erb :"responses/show"
+  erb :"surveys/show"
 end

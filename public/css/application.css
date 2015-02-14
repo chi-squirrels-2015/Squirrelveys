@@ -2,8 +2,28 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
 }
 th {
   text-align: left;
+}
+#header {
+  background-color:green;
+  color: white;
+  font-family:verdana,arial;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+#header a{
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+}
+#header a:hover{
+  color:#ff0;
+}
+#login{
+  
 }
