@@ -2,10 +2,10 @@
   <h1>
     Create A New Survey:
   </h1>
-  <form action="/surveys" method="POST">
+    <form action="/surveys" method="POST">
     <br/>
     <div class="questions">
-        <%= erb :"surveys/questions/_form", locals: { question: @question } %>
+      <%= erb :"surveys/questions/_form", locals: { questions: @question } %>
     </div>
     <a href="#">+</a> <!--To append a new question-->
     <input type="submit" value="Create!">
