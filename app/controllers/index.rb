@@ -1,10 +1,14 @@
 get '/' do
   # Look in app/views/index.erb
+  if current_user
+    redirect '/profile'
+  end
   erb :index
 end
 
 # +++++++++++++++++++++++++++++++ SURVEYS
 post '/surveys' do
+  p params
   @survey = current_user.surveys.build(params[:survey])
 
   params[:questions].each do |question|
@@ -122,7 +126,7 @@ get '/surveys/:survey_id/responses/:id' do
   erb :"responses/show"
 end
 
-post '/surveys/:id/responses' do
+post '/surveys/:ref_code/responses' do
   @survey = Survey.find_by(ref_code: params[:ref_code])
 
   params[:answers].each do |answer|
@@ -133,11 +137,11 @@ post '/surveys/:id/responses' do
 end
 
 get '/finished' do
-  erb :"responses/finished"
+  erb :"complete"
 end
 
 # ++++++++++++++++++++++++++ LAST ROUTE
 get '/:ref_code' do
   @survey = Survey.find_by(ref_code: params[:ref_code])
-  erb :"responses/show"
+  erb :"surveys/show"
 end

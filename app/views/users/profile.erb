@@ -6,7 +6,7 @@
          <a href = "/surveys/new"> Create New Survey</a>
     <%else%>
       <%@surveys.each do |survey|%>
-        <li><a href = "#"><%=survey.survey_name%></a>
+        <li><a href = "/<%=survey.ref_code%>"><%=survey.survey_name%></a>
           <br>
           <form action="/surveys/<%=survey.id%>/delete %>" method="POST">
             <input name="_method" type="hidden" value="delete" />
