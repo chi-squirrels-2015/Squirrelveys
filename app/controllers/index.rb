@@ -53,6 +53,11 @@ put 'surveys/:id' do
   survey.update(params[:survey])
 end
 
+delete '/surveys/:id/delete' do
+  Survey.destroy(params[:id])
+  redirect '/'
+end
+
 
 # +++++++++++++++++++++++++++++++++ USERS
 get '/signup' do
