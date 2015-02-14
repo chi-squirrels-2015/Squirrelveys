@@ -1,5 +1,4 @@
 <div class="container">
-  <h1>Squirrelveys</h1>
-  <a href="/login">Login</a>
-  <a href="/signup">Create Account</a>
+  <%= erb :"users/_login-form", locals: { user: @user } %>
+  <a id="login" href="/signup">Create Account</a>
 </div>
