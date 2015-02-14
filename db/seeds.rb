@@ -7,7 +7,7 @@ end
 
 #SURVEYS-------
 User.all.each do |user|
-  Survey.create(ref_code: "#{rand(100000..999999)}", user_id: user.id )
+  Survey.create(ref_code: "#{rand(100000..999999)}", user_id: user.id, survey_name: Faker::Lorem.word )
 end
 
 #QUESTIONS------
@@ -22,7 +22,7 @@ Question.all.each do |question|
   Answer.create(content: Faker::Lorem.word, question_id: question.id)
   Answer.create(content: Faker::Lorem.word, question_id: question.id)
   Answer.create(content: Faker::Lorem.word, question_id: question.id)
-end  
+end
 
 #RESPONSES--------
 Survey.all.each do |survey|
