@@ -4,18 +4,20 @@
   <ol>
     <form name="responses" action="/surveys/<%=@survey.ref_code%>/responses" method="POST">
     <% @survey.questions.each do |question| %>
+    <br>
+      <a href="#">Edit this Question</a>
+      <a href="#">Delete this Question</a>
+      <br>
       <li><h2><%= question.content %></h2></li>
       <ol>
       <%if current_user == @survey.user%>
-        <a href="#">Edit this Question</a>
-        <a href="#">Delete this Question</a>
       <%end%>
       <% question.answers.each do |answer| %>
         <input id="response[<%= question.id  %>]" type="radio" name="response[<%= question.id %>]" value="<%= answer.id %>" text="<%= answer %>">
-        <label for="response[<%= question.id  %>]"><%= answer.content %></label><br>
+        <label for="response[<%= question.id  %>]"><%= answer.content %></label>
         <%if current_user == @survey.user%>
           <a href="#">Edit This Answer</a>
-          <a href="#">Delete This Answer</a>
+          <a href="#">Delete This Answer</a><br>
         <%end%>
       <%end%>
       </ol>
