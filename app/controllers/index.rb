@@ -113,10 +113,10 @@ get '/logout' do
 end
 # +++++++++++++++++++++++++++++++++++++++ RESPONSES
 get '/surveys/:id/responses' do
-  if current_user == survey.owner
-    @survey= Survey.find(params[:id])
+  @survey= Survey.find(params[:id])
+  if current_user == @survey.user
     @responses = @survey.responses
-
+    @answers = @survey.answers.pluck("content")
     erb :"responses/show"
   else
     flash[:notice] = "You don't have access to those responses."
@@ -124,28 +124,19 @@ get '/surveys/:id/responses' do
   end
 end
 
-# get '/surveys/:survey_id/responses/:id' do
-#   if current_user == survey.owner
-#     @response = Response.find(params[:id])
-#     survey_id = @response.survey_id
-#     @survey= Survey.find(survey_id)
+#Not sure why we would need a post? As an owner of a survey,
+#you may want to view the responses, but you shouldn't be able
+#to change them.
 
-#     erb :"responses/show"
-#   else
-#     flash[:notice] = "You don't have access to those responses."
-#     redirect "/"
+# post '/surveys/:ref_code/responses' do
+#   @survey = Survey.find_by(ref_code: params[:ref_code])
+
+#   params[:answers].each do |answer|
+#     @survey.responses.create(answer: answer)
 #   end
+
+#   redirect "/finished"
 # end
-
-post '/surveys/:ref_code/responses' do
-  @survey = Survey.find_by(ref_code: params[:ref_code])
-
-  params[:answers].each do |answer|
-    @survey.responses.create(answer: answer)
-  end
-
-  redirect "/finished"
-end
 
 get '/finished' do
   erb :"complete"
