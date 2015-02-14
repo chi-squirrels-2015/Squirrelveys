@@ -2,7 +2,7 @@
   <h1>
     Create A New Survey:
   </h1>
-  <form action="/surveys/new" method="POST">
+  <form action="/surveys" method="POST">
     <br/>
     <div class="questions">
         <%= erb :"surveys/questions/_form", locals: { question: @question } %>

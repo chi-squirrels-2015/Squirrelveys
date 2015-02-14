@@ -5,6 +5,7 @@ end
 
 # +++++++++++++++++++++++++++++++ SURVEYS
 post '/surveys' do
+  p params
   @survey = current_user.surveys.build(params[:survey])
 
   params[:questions].each do |question|
