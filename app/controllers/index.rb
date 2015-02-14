@@ -54,8 +54,10 @@ put 'surveys/:id' do
 end
 
 delete '/surveys/:id/delete' do
+  p current_user
   Survey.destroy(params[:id])
-  redirect '/'
+  p current_user
+  redirect '/profile'
 end
 
 
