@@ -6,9 +6,17 @@
     <% @survey.questions.each do |question| %>
       <li><h2><%= question.content %></h2></li>
       <ol>
+      <%if current_user == @survey.user%>
+        <a href="#">Edit this Question</a>
+        <a href="#">Delete this Question</a>
+      <%end%>
       <% question.answers.each do |answer| %>
         <input id="response[<%= question.id  %>]" type="radio" name="response[<%= question.id %>]" value="<%= answer.id %>" text="<%= answer %>">
         <label for="response[<%= question.id  %>]"><%= answer.content %></label><br>
+        <%if current_user == @survey.user%>
+          <a href="#">Edit This Answer</a>
+          <a href="#">Delete This Answer</a>
+        <%end%>
       <%end%>
       </ol>
     <%end%>
