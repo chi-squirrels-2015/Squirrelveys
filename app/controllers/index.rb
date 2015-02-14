@@ -1,5 +1,8 @@
 get '/' do
   # Look in app/views/index.erb
+  if current_user
+    redirect '/profile'
+  end
   erb :index
 end
 
