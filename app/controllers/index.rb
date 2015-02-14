@@ -99,6 +99,10 @@ post '/login' do
   end
 end
 
+get '/logout' do
+  session[:user_id] = nil
+  redirect '/'
+end
 # +++++++++++++++++++++++++++++++++++++++ RESPONSES
 get '/surveys/:id/responses' do
   survey = Survey.find(params[:id])
