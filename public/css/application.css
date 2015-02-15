@@ -5,7 +5,17 @@
 
 .navbar a.dropdown-toggle {
   font-size: 18px;
-  color: #000000;
+}
+
+.navbar-nav a .profile-picture {
+  width: 50px;
+  float: left;
+  margin: -5px 5px 0;
+  border: 1px solid #CCCCCC;
+}
+
+.navbar a.dropdown-toggle:hover .profile-picture {
+  border-color: #000000;
 }
 
 .navbar .navbar-nav>li>a {
@@ -19,12 +29,12 @@
 .navbar-header .navbar-brand  {
   font-size: 24px;
   color: #37B5DB;
-  line-height: 30px;
+  line-height: 28px;
 }
 
 .navbar-header .slogan {
-  padding: 0;
   position: relative;
+  display: inline-block;
   bottom: 10px;
 }
 
@@ -35,6 +45,7 @@
 .navbar .navbar-form {
   padding-top: 10px;
 }
+
 
 .jumbotron {
   background-color: #37B5DB;

@@ -20,20 +20,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>squirrelveys | customer feedback just got easier.</title>
 </head>
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a href="/" class="navbar-brand">SQUIRRELVEYS</a>
+        <a href="/" class="navbar-brand">Squirrelveys</a>
         <span class="slogan">Customer feedback just got easier.</span>
       </div>
 
       <% if current_user %>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.full_name.upcase %> ▾</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">        <img class="profile-picture" src=<%= current_user.profile_picture %> alt="Profile Picture"> <%= current_user.full_name %> ▾</a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/profile">My Surveys</a></li>
             <li><a href="/surveys/new">Create a new survey</a></li>
@@ -73,7 +73,7 @@
 
   <%= yield %>
   <footer class="container-fluid text-center">
-    &copy; 2015 SQUIRRELVEYS | Customer feedback just got easier.
+    &copy; 2015 Squirrelveys | Customer feedback just got easier.
   </footer>
 </body>
 </html>
