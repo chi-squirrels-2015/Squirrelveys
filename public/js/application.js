@@ -1,7 +1,20 @@
 $(document).ready(function() {
 
 //CREATING A NEW SURVEY
+//adding a question
+$("#newQuestion").on('click', function(event) {
 
+
+  $( ".questions" ).append(
+    response)
+})
+
+//adding an answer to a question
+
+$("#newAnswer").on('click', function(event) {
+  $( ".questions" ).append(
+    $(".questions").eq(0).clone() )
+})
 
 //EDITING AN EXISTING SURVEY
 // create a listening event for editing a survey for  the user who is logged in
