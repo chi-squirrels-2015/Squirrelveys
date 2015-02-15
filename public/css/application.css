@@ -37,9 +37,10 @@
 }
 
 .jumbotron {
-  margin-top: 150px;
   background-color: #37B5DB;
   color: #FFFFFF;
+  border-radius: 20px;
+  margin-top: 30px;
 }
 
 .jumbotron .login {
