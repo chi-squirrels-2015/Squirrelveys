@@ -9,12 +9,14 @@
   <%else%>
   <table class="table table-hover table-striped">
     <thead>
-      <th>Name</th>
-      <th># of questions</th>
-      <th># of responses</th>
-      <th>Date Created</th>
-      <th></th>
-      <th></th>
+      <tr>
+        <th>Name</th>
+        <th># of questions</th>
+        <th># of responses</th>
+        <th>Date Created</th>
+        <th></th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
       <% @surveys.each do |survey| %>
