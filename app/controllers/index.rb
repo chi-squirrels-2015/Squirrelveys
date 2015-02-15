@@ -72,8 +72,8 @@ post '/users' do
     session[:user_id] = @user.id
     redirect '/profile'
   else
-    flash[:notice] = @user.errors.full_messages
-    erb :'users/new'
+    flash[:errors] = @user.errors.full_messages
+    redirect "/signup"
   end
 end
 
