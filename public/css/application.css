@@ -1,9 +1,60 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+.navbar-default {
+  height: 70px;
+  border-radius: 0;
 }
-th {
-  text-align: left;
+
+.navbar a.dropdown-toggle {
+  font-size: 18px;
+  color: #000000;
+}
+
+.navbar .navbar-nav>li>a {
+  line-height: 40px;
+}
+
+.navbar .navbar-btn {
+  padding-top: 10px;
+}
+
+.navbar-header .navbar-brand  {
+  font-size: 24px;
+  color: #37B5DB;
+  line-height: 30px;
+}
+
+.navbar-header .slogan {
+  padding: 0;
+  position: relative;
+  bottom: 10px;
+}
+
+.navbar .navbar-brand:hover {
+  color: #27819C;
+}
+
+.navbar .navbar-form {
+  padding-top: 10px;
+}
+
+.jumbotron {
+  background-color: #37B5DB;
+  color: #FFFFFF;
+}
+
+.jumbotron .login {
+  font-size: 14px;
+  color: #EEEEEE;
+}
+
+body {
+  height: 100%;
+}
+
+footer {
+  width: 100%;
+  color: #FFFFFF;
+  position: fixed;
+  background-color: #267E99;
+  bottom: 0;
+  padding: 4px;
 }
