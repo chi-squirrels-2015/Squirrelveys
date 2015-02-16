@@ -1,9 +1,11 @@
-<br>
-<input type='text' name='questions[]' placeholder="what is your question?" />
-<br>
+<div class="form-group row">
+  <label for="question" class="control-label col-md-2">Question</label>
+  <div class="col-md-10">
+    <input class="form-control" type='text' name='question' placeholder="what is your question?"/>
+  </div>
+</div>
 <div class="answers">
   <%= erb :"surveys/answers/_form", locals: { answers: @answers } %>
 </div>
-<br>
-<a id="newAnswer" href="#">Add Answer</a> <!--To append a new answer partial-->
-<br>
+<a id="newAnswer" class="btn btn-warning btn-md" href="#">Add Answer</a> <!--To append a new answer partial-->
+<hr />

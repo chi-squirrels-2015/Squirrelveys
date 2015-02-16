@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @survey.responses.count / @survey.questions.count %> responses for <em><%= @survey.survey_name %></em></h1>
+  <hr />
+  <% @survey.questions.each_with_index do |question, index| %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><%= index + 1 %>. <%= question.content %></div>
+        <div class="panel-body">
+          <ul class="list-group col-md-8 col-md-offset-2">
+            <% question.answers.each do |answer| %>
+            <li class="list-group-item">
+              <span class="badge"><%= answer.responses.count %></span>
+              <%= answer.content %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

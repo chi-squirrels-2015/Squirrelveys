@@ -72,8 +72,8 @@ post '/users' do
     session[:user_id] = @user.id
     redirect '/profile'
   else
-    flash[:notice] = @user.errors.full_messages
-    erb :'users/new'
+    flash[:errors] = @user.errors.full_messages
+    redirect "/signup"
   end
 end
 
@@ -98,11 +98,11 @@ end
 post '/login' do
   user = User.authenticate(params[:email], params[:password])
   if user
-    flash[:notice] = "Successfully logged in!"
+    flash[:notice] = "Welcome back, #{user.full_name.split(" ").first}!"
     session[:user_id] = user.id
     redirect '/profile'
   else
-    flash[:notice] = "email password not found"
+    flash[:error] = "Email/password not found. Please try again."
     redirect '/login'
   end
 end
@@ -113,33 +113,30 @@ get '/logout' do
 end
 # +++++++++++++++++++++++++++++++++++++++ RESPONSES
 get '/surveys/:id/responses' do
-  survey = Survey.find(params[:id])
-
-  if current_user == survey.owner
-    @responses = survey.responses
-
-    erb :"responses/index"
+  @survey= Survey.find(params[:id])
+  if current_user == @survey.user
+    @responses = @survey.responses
+    @answers = @survey.answers.pluck("content")
+    erb :"responses/show"
   else
     flash[:notice] = "You don't have access to those responses."
     redirect "/"
   end
 end
 
-get '/surveys/:survey_id/responses/:id' do
-  response = Response.find(params[:id])
+#Not sure why we would need a post? As an owner of a survey,
+#you may want to view the responses, but you shouldn't be able
+#to change them.
 
-  erb :"responses/show"
-end
+# post '/surveys/:ref_code/responses' do
+#   @survey = Survey.find_by(ref_code: params[:ref_code])
 
-post '/surveys/:ref_code/responses' do
-  @survey = Survey.find_by(ref_code: params[:ref_code])
+#   params[:answers].each do |answer|
+#     @survey.responses.create(answer: answer)
+#   end
 
-  params[:answers].each do |answer|
-    @survey.responses.create(answer: answer)
-  end
-
-  redirect "/finished"
-end
+#   redirect "/finished"
+# end
 
 get '/finished' do
   erb :"complete"

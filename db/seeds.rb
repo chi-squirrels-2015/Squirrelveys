@@ -1,34 +1,38 @@
 require 'faker'
 require 'bcrypt'
 #USERS--------
+User.create(full_name: "Testy McTester", email: "test@test.com", password: "password", profile_picture: Faker::Avatar.image)
 5.times do
   User.create(full_name: Faker::Name.name, email: Faker::Internet.email, password_hash: BCrypt::Password.create("password"), profile_picture: Faker::Avatar.image)
 end
 
 #SURVEYS-------
 User.all.each do |user|
-  Survey.create(ref_code: "#{rand(100000..999999)}", user_id: user.id, survey_name: Faker::Lorem.word )
+  rand(5..10).times do
+    Survey.create(user: user, survey_name: Faker::Lorem.word )
+  end
 end
 
 #QUESTIONS------
 Survey.all.each do |survey|
-  Question.create(content: "#{Faker::Lorem.sentence}?", survey_id: survey.id)
-  Question.create(content: "#{Faker::Lorem.sentence}?", survey_id: survey.id)
+  rand(5..20).times do
+    Question.create(content: "#{Faker::Lorem.sentence[0..-2]}?", survey: survey)
+  end
 end
 
 #ANSWERS--------
 Question.all.each do |question|
-  Answer.create(content: Faker::Lorem.word, question_id: question.id)
-  Answer.create(content: Faker::Lorem.word, question_id: question.id)
-  Answer.create(content: Faker::Lorem.word, question_id: question.id)
-  Answer.create(content: Faker::Lorem.word, question_id: question.id)
+  Answer.create(content: Faker::Lorem.word, question: question)
+  Answer.create(content: Faker::Lorem.word, question: question)
+  Answer.create(content: Faker::Lorem.word, question: question)
+  Answer.create(content: Faker::Lorem.word, question: question)
 end
 
 #RESPONSES--------
 Survey.all.each do |survey|
-  Response.create(survey_id: survey.id, answer_id: survey.answers.sample.id)
-  Response.create(survey_id: survey.id, answer_id: survey.answers.sample.id)
-  Response.create(survey_id: survey.id, answer_id: survey.answers.sample.id)
-  Response.create(survey_id: survey.id, answer_id: survey.answers.sample.id)
-  Response.create(survey_id: survey.id, answer_id: survey.answers.sample.id)
+  rand(5..10).times do
+    survey.questions.each do |question|
+      Response.create(survey: survey, answer: question.answers.sample)
+    end
+  end
 end

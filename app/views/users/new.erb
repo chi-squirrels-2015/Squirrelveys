@@ -1,11 +1,22 @@
-<div class="container">
-  <h2>Create Account</h2>
-  <form action='/users' method='post'>
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Your Account</h3>
+    </div>
+    <div class="panel-body">
 
-    <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
+      <% if flash[:errors] %>
+      <div class="row">
+        <% flash[:errors].each do |error| %>
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <%= error %>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
 
-    <%= erb :"users/_form", locals: { user: @user } %>
-  </form>
+      <%= erb :"users/_form", locals: { user: @user } %>
+    </div>
+  </div>
 </div>
