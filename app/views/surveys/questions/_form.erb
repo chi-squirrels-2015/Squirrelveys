@@ -1,7 +1,9 @@
+<br>
 <input type='text' name='question' placeholder="what is your question?"/>
 <br>
-<div id="answers">
+<div class="answers">
   <%= erb :"surveys/answers/_form", locals: { answer: @answer } %>
 </div>
 <br>
 <a id="newAnswer" href="#">Add Answer</a> <!--To append a new answer partial-->
+<br>

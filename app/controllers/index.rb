@@ -147,10 +147,18 @@ end
 
 # ++++++++++++++++++++++++++ QUESTIONS
 
+get '/questions/new' do
+  if request.xhr?
+  erb :"surveys/questions/_form", layout: false
+  end
+end
+
 get '/questions/:id/edit' do
   @question = Question.find(params[:id])
   erb :"surveys/questions/edit"
 end
+
+
 
 put '/questions/:id' do
   @question = Question.find(params[:id])
@@ -166,6 +174,12 @@ end
 get '/answers/:id/edit' do
   @answer = Answer.find(params[:id])
   erb :"surveys/answers/edit"
+end
+
+get '/answers/new' do
+  if request.xhr?
+  erb :"surveys/answers/_form", layout: false
+  end
 end
 
 put '/answers/:id' do
