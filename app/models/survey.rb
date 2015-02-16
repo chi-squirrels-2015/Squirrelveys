@@ -5,5 +5,6 @@ class Survey < ActiveRecord::Base
   belongs_to :user
 
   validates :ref_code, uniqueness: true
-  
+
+  # after_save :generate_ref_code
 end

@@ -1,8 +1,8 @@
 <br>
-<input type='text' name='question' placeholder="what is your question?"/>
+<input type='text' name='questions[]' placeholder="what is your question?" />
 <br>
 <div class="answers">
-  <%= erb :"surveys/answers/_form", locals: { answer: @answer } %>
+  <%= erb :"surveys/answers/_form", locals: { answers: @answers } %>
 </div>
 <br>
 <a id="newAnswer" href="#">Add Answer</a> <!--To append a new answer partial-->

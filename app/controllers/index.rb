@@ -8,14 +8,14 @@ end
 
 # +++++++++++++++++++++++++++++++ SURVEYS
 post '/surveys' do
-  p params
-  @survey = current_user.surveys.build(params[:survey])
+  puts params
+  @survey = current_user.surveys.create!(params[:survey])
 
   params[:questions].each do |question|
-    q = @survey.questions.create(content)
-    question.answers.each do |answer|
-      q.answers.create(answer)
-    end
+    @survey.questions.create(content: question)
+    #   q.answers.each do |answer|
+    #   question.answers.create(content: answer)
+    # end
   end
 
   if @survey.save

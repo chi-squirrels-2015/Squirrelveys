@@ -14,13 +14,14 @@ $("#newQuestion").on('click', function(event) {
 });
 
 //adding an answer to a question--------------
-$("#newAnswer").on('click', function(event) {
+$(".container").on("click","#newAnswer",function(event) {
   var request = $.ajax({
                         url:'/answers/new',
                         method: 'get'
   });
   request.done(function(response) {
-    $(".answers").append(response)
+    console.log("answer to append")
+    $(".answers").closest().append(response)
   });
 });
 // need to consider adding submit buttons for each question

@@ -4,8 +4,11 @@
   </h1>
     <form action="/surveys" method="POST">
     <br/>
+    <h3>Name Your Survey:</h3>
+    <input type='text' name='survey[survey_name]' placeholder='Survey Title'/>
+    <h3>Questions:</h3>
     <div class="questions">
-      <%= erb :"surveys/questions/_form", locals: { questions: @question } %>
+      <%= erb :"surveys/questions/_form", locals: { questions: @questions } %>
     </div>
     <br/>
     <a id="newQuestion" href="#">+NEW QUESTION</a> <!--To append a new question-->
