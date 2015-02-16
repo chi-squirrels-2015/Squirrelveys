@@ -1,16 +1,17 @@
 <div class="container">
-  <h1>
-    Create A New Survey:
-  </h1>
-    <form action="/surveys" method="POST">
-    <br/>
-    <div class="questions">
-      <%= erb :"surveys/questions/_form", locals: { questions: @question } %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Create a Survey</div>
+      <div class="panel-body">
+        <form class="col-md-8 col-md-offset-2" action="/surveys" method="POST">
+          <div class="questions">
+            <%= erb :"surveys/questions/_form", locals: { questions: @question } %>
+          </div>
+          <a id="newQuestion" class="btn btn-success" href="#">+NEW QUESTION</a> <!--To append a new question-->
+          <button class="btn btn-primary" type="submit">Create!</button>
+          <a class="btn btn-default" href="/surveys/new">Reset</a>
+        </form>
+      </div>
     </div>
-    <br/>
-    <a id="newQuestion" href="#">+NEW QUESTION</a> <!--To append a new question-->
-    <br/>
-    <hr>
-    <input type="submit" value="Create!">
-  </form>
+  </div>
 </div>

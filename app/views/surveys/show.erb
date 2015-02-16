@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= @survey.survey_name %></h1>
-    <form class="horizontal-form" name="responses" action="/surveys/<%=@survey.ref_code%>/responses" method="POST">
+    <form class="horizontal-form" name="responses" action="/surveys/<%= @survey.ref_code %>/responses" method="POST">
     <% @survey.questions.each do |question| %>
     <br>
       <li><h2><%= question.content %></h2></li>
