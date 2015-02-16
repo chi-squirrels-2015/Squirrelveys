@@ -1,5 +1,17 @@
-<form action = "/questions/<%=@question.id%>" method = "POST">
-  <input name="_method" type="hidden" value="PUT"/>
-  <label for="content">Question:</label>
-  <input id="question_content" type="text" name="question[content]" value="<%= @question.content %>" size=60/>
-</form>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Update a Question on <em><%= @question.survey.survey_name %></em></div>
+    <div class="panel-body">
+      <form action = "/questions/<%= @question.id %>" method = "POST">
+        <input name="_method" type="hidden" value="PUT"/>
+        <div class="form-group row">
+          <label for="question" class="control-label col-md-2">Question</label>
+          <div class="col-md-10">
+            <input id="question_content" type="text" name="question[content]" value="<%= @question.content %>" size=60/>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Update Question</button>
+      </form>
+    </div>
+  </div>
+</div>

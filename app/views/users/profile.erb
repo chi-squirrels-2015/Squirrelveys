@@ -1,27 +1,45 @@
-<h1> Hey there, <%=current_user.full_name%></h1>
-  <ul>
-    <%if @surveys.length == 0%>
-         <a href = "/surveys/new"> Create New Survey</a>
-    <%else%>
-      <%@surveys.each do |survey|%>
-        <li><a href = "/<%=survey.ref_code%>"><%=survey.survey_name%></a>
-          <br>
-          <form action="/surveys/<%=survey.id%>/delete" method="POST">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <h1>My Surveys</h1>
+      <a href="/surveys/new" class="btn btn-primary btn-xs">Create a Survey</a>
+    </div>
+  </div>
+  <hr />
+  <% if @surveys.empty? %>
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <h3>You currently don't have any surveys. Why don't you create one?</h3>
+    <a class="btn btn-primary" href="/surveys/new">Create a Survey</a>
+  </div>
+  <%else%>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th># of questions</th>
+        <th># of responses</th>
+        <th>Date Created</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @surveys.each do |survey| %>
+      <tr>
+        <td><a href="/<%= survey.ref_code %>"><%= survey.survey_name %></a></td>
+        <td><%= survey.questions.count %></td>
+        <td><a href="/surveys/<%= survey.id %>/responses"><%= survey.responses.count / survey.questions.count %></a></td>
+        <td><%= survey.created_at.strftime("%b-%d-%Y") %></td>
+        <td><a class="btn btn-warning btn-xs float-right" href="/<%= survey.ref_code %>">✎ Edit</a></td>
+        <td>
+          <form class="form-horizontal" action="/surveys/<%=survey.id%>/delete" method="POST">
             <input name="_method" type="hidden" value="delete" />
-            <input type="submit" value="DELETE" />
+            <button class="btn btn-danger btn-xs" type="submit">× Delete</button>
           </form>
-          <br>
-          <form action="/surveys/<%=survey.id%>/edit" method="POST">
-            <input name="_method" type="hidden" value="put" />
-            <input type="submit" value="Edit" />
-          </form>
-          <br>
-          <a href = "/surveys/new"> Create New Survey</a>
-          <br>
-        </li>
-      <%end%>
-    <%end%>
-  </ul>
-
-
-
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

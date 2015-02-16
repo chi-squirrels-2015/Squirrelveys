@@ -1,4 +1,6 @@
 class Survey < ActiveRecord::Base
+  before_create :generate_ref_code
+
   has_many :questions
   has_many :answers, through: :questions
   has_many :responses
@@ -26,5 +28,11 @@ class Survey < ActiveRecord::Base
       end
     end
     hash_of_answers[answer_content]
+  end
+
+  private
+
+  def generate_ref_code
+    self.ref_code = rand(36**10).to_s(36)
   end
 end

@@ -1,5 +1,17 @@
-<form action = "/answers/<%=@answer.id%>" method = "POST">
-  <input name="_method" type="hidden" value="PUT"/>
-  <label for="content">Question:</label>
-  <input id="answer_content" type="text" name="answer[content]" value="<%= @answer.content %>" size=60/>
-</form>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Update an Answer for <em><%= @answer.question.content %></em> on <em><%= @answer.question.survey.survey_name %></em></div>
+    <div class="panel-body">
+      <form action = "/answers/<%= @answer.id %>" method = "POST">
+        <input name="_method" type="hidden" value="PUT"/>
+        <div class="form-group row">
+          <label for="answer[content]" class="control-label col-md-2">Answer</label>
+          <div class="col-md-10">
+            <input id="answer_content" type="text" name="answer[content]" value="<%= @answer.content %>" size=60/>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Update Answer</button>
+      </form>
+    </div>
+  </div>
+</div>

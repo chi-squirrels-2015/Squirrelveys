@@ -72,8 +72,8 @@ post '/users' do
     session[:user_id] = @user.id
     redirect '/profile'
   else
-    flash[:notice] = @user.errors.full_messages
-    erb :'users/new'
+    flash[:errors] = @user.errors.full_messages
+    redirect "/signup"
   end
 end
 
@@ -98,11 +98,11 @@ end
 post '/login' do
   user = User.authenticate(params[:email], params[:password])
   if user
-    flash[:notice] = "Successfully logged in!"
+    flash[:notice] = "Welcome back, #{user.full_name.split(" ").first}!"
     session[:user_id] = user.id
     redirect '/profile'
   else
-    flash[:notice] = "email password not found"
+    flash[:error] = "Email/password not found. Please try again."
     redirect '/login'
   end
 end
