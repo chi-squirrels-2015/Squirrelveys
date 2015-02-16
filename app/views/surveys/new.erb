@@ -7,7 +7,10 @@
     <div class="questions">
       <%= erb :"surveys/questions/_form", locals: { questions: @question } %>
     </div>
-    <a href="#">+</a> <!--To append a new question-->
+    <br/>
+    <a id="newQuestion" href="#">+NEW QUESTION</a> <!--To append a new question-->
+    <br/>
+    <hr>
     <input type="submit" value="Create!">
   </form>
 </div>
