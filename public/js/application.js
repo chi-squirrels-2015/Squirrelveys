@@ -21,7 +21,8 @@ $(".container").on("click","#newAnswer",function(event) {
   });
   request.done(function(response) {
     console.log("answer to append")
-    $(".answers").closest().append(response)
+
+    $(".answers").closest(".answers").append(response)
   });
 });
 // need to consider adding submit buttons for each question
