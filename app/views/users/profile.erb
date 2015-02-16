@@ -1,5 +1,10 @@
 <div class="container">
-  <h1 class="text-center">My Surveys</h1>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <h1>My Surveys</h1>
+      <a href="/surveys/new" class="btn btn-primary btn-xs">Create a Survey</a>
+    </div>
+  </div>
   <hr />
   <% if @surveys.empty? %>
   <div class="col-md-8 col-md-offset-2 text-center">
