@@ -1,8 +1,6 @@
 <div class="container">
   <h1><%= @survey.survey_name %></h1>
-  <br>
-  <ol>
-    <form name="responses" action="/surveys/<%=@survey.ref_code%>/responses" method="POST">
+    <form class="horizontal-form" name="responses" action="/surveys/<%=@survey.ref_code%>/responses" method="POST">
     <% @survey.questions.each do |question| %>
     <br>
       <li><h2><%= question.content %></h2></li>
@@ -19,7 +17,7 @@
       <% question.answers.each do |answer| %>
         <input id="response[<%= question.id  %>]" type="radio" name="response[<%= question.id %>]" value="<%= answer.id %>" text="<%= answer %>">
         <label for="response[<%= question.id  %>]"><%= answer.content %></label>
-        <%if current_user == @survey.user%>
+        <%if current_user == @survey.user %>
           <a href="/answers/<%=answer.id%>/edit">Edit This Answer</a>
 
         <form action = "/questions/<%=answer.id%>/delete" method = "POST">

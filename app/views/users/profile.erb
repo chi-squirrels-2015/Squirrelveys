@@ -23,7 +23,7 @@
       <tr>
         <td><a href="/<%= survey.ref_code %>"><%= survey.survey_name %></a></td>
         <td><%= survey.questions.count %></td>
-        <td><a href="/surveys/<%= survey.id %>/responses"><%= survey.responses.count %></a></td>
+        <td><a href="/surveys/<%= survey.id %>/responses"><%= survey.responses.count / survey.questions.count %></a></td>
         <td><%= survey.created_at.strftime("%b-%d-%Y") %></td>
         <td><a class="btn btn-warning btn-xs float-right" href="/surveys/<%= survey.id %>/edit">✎ Edit</a></td>
         <td>
