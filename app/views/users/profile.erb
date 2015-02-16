@@ -30,7 +30,7 @@
         <td><%= survey.questions.count %></td>
         <td><a href="/surveys/<%= survey.id %>/responses"><%= survey.responses.count / survey.questions.count %></a></td>
         <td><%= survey.created_at.strftime("%b-%d-%Y") %></td>
-        <td><a class="btn btn-warning btn-xs float-right" href="/surveys/<%= survey.id %>/edit">✎ Edit</a></td>
+        <td><a class="btn btn-warning btn-xs float-right" href="/<%= survey.ref_code %>">✎ Edit</a></td>
         <td>
           <form class="form-horizontal" action="/surveys/<%=survey.id%>/delete" method="POST">
             <input name="_method" type="hidden" value="delete" />
